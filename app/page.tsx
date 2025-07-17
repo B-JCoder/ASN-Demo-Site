@@ -1,13 +1,15 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, Shield, DollarSign, Clock, Car, Phone, MapPin } from "lucide-react"
 import Navbar from "@/components/navbar"
 import BookingForm from "@/components/booking-form"
+import CarCard from "@/components/cars"
+import WhatsAppButton from "@/components/whatsapp-button"
 
 export default function HomePage() {
+  // State to manage selected vehicle
   const [selectedVehicle, setSelectedVehicle] = useState<string>("")
 
   useEffect(() => {
@@ -37,14 +39,43 @@ export default function HomePage() {
     }
   }
 
-  const handleCarSelect = (carName: string) => {
+  const handleGetQuote = (carName: string) => {
     setSelectedVehicle(carName)
     scrollToBooking()
   }
 
+  const [filter, setFilter] = useState("All")
+
+  // Updated cars array with proper categories - ensuring each car has consistent data
+  const cars = [
+    // Sedan Cars
+    { id: 1, name: "Honda Accord", category: "Sedan" },
+    { id: 2, name: "Honda Civic", category: "Sedan" },
+    { id: 3, name: "Honda HR-V", category: "Sedan" },
+    { id: 4, name: "Toyota Camry", category: "Sedan" },
+    { id: 5, name: "Toyota Prius", category: "Sedan" },
+    { id: 6, name: "Hyundai Elantra", category: "Sedan" },
+
+    // SUV Cars
+    { id: 7, name: "Toyota RAV4", category: "SUV" },
+    { id: 8, name: "Tesla Model Y", category: "SUV" },
+    { id: 9, name: "Honda CR-V", category: "SUV" },
+
+    // Van Cars
+    { id: 10, name: "Ford Transit Custom", category: "Van" },
+    { id: 11, name: "Ford Transit", category: "Van" },
+    { id: 12, name: "Mercedes-Benz Sprinter", category: "Van" },
+  ]
+
+  // Improved filtering logic
+  const filteredCars = filter === "All" ? cars : cars.filter((car) => car.category === filter)
+
   return (
     <div className="min-h-screen bg-primary-dark">
       <Navbar />
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
 
       {/* Hero Section */}
       <section
@@ -53,7 +84,6 @@ export default function HomePage() {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#FC9510] to-[#212121]"></div>
         <div className="absolute inset-0 bg-black/20"></div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-center lg:text-left hero-text-animate">
@@ -71,7 +101,6 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
               </button>
             </div>
-
             <div className="relative lg:scale-110">
               <Image
                 src="/images/luxury-cars-banner.jpg"
@@ -94,7 +123,6 @@ export default function HomePage() {
               Experience the difference with our customer-first approach to car rentals
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
@@ -105,7 +133,6 @@ export default function HomePage() {
                 Credit card optional. We make car rental accessible to everyone.
               </p>
             </div>
-
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <DollarSign className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -115,7 +142,6 @@ export default function HomePage() {
                 Transparent pricing with no hidden fees. What you see is what you pay.
               </p>
             </div>
-
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <Car className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -125,7 +151,6 @@ export default function HomePage() {
                 Many vehicles for different needs, from economy to luxury cars.
               </p>
             </div>
-
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <Clock className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -135,7 +160,6 @@ export default function HomePage() {
                 Rent by day, week, or month. Choose what works best for you.
               </p>
             </div>
-
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section md:col-span-2 lg:col-span-1">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -149,7 +173,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cars Section */}
       <section id="cars" className="py-16 md:py-20 bg-primary-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16 fade-in-section">
@@ -158,111 +181,60 @@ export default function HomePage() {
               Choose from our diverse selection of well-maintained vehicles
             </p>
           </div>
-
+          {/* Filter Buttons */}
+          <div className="flex justify-center gap-4 mb-10">
+            {["All", "Sedan", "SUV", "Van"].map((type) => (
+              <button
+                key={type}
+                className={`px-6 py-3 rounded-full font-medium text-white transition-all duration-300 ${
+                  filter === type
+                    ? "bg-accent-orange shadow-lg scale-105"
+                    : "bg-gray-700 hover:bg-gray-600 hover:scale-105"
+                }`}
+                onClick={() => setFilter(type)}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+          {/* Car Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
-              <Image
-                src="/images/tesla-cars.jpg"
-                alt="Tesla Model Y"
-                width={400}
-                height={250}
-                className="w-full h-40 md:h-48 object-cover"
+            {filteredCars.map((car) => (
+              <CarCard
+                key={car.id}
+                name={car.name}
+                category={car.category}
+                onGetQuote={() => handleGetQuote(car.name)}
               />
-              <div className="p-4 md:p-6">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Tesla Model Y</h3>
-                <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
-                  <span className="bg-accent-orange text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Electric
-                  </span>
-                  <span className="bg-green-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Spacious
-                  </span>
-                  <span className="bg-blue-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">Safe</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-xl md:text-2xl font-bold text-white">$89</span>
-                    <span className="text-gray-400 text-sm md:text-base">/day</span>
-                  </div>
-                  <button
-                    onClick={() => handleCarSelect("Tesla Model Y")}
-                    className="bg-accent-orange text-white px-4 md:px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 text-sm md:text-base"
-                  >
-                    Select
-                  </button>
-                </div>
-              </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
-              <Image
-                src="/images/blue-sedan.jpg"
-                alt="Compact Sedan"
-                width={400}
-                height={250}
-                className="w-full h-40 md:h-48 object-cover"
-              />
-              <div className="p-4 md:p-6">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Compact Sedan</h3>
-                <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
-                  <span className="bg-accent-orange text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Fuel Efficient
-                  </span>
-                  <span className="bg-green-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Reliable
-                  </span>
-                  <span className="bg-blue-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Comfortable
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-xl md:text-2xl font-bold text-white">$45</span>
-                    <span className="text-gray-400 text-sm md:text-base">/day</span>
-                  </div>
-                  <button
-                    onClick={() => handleCarSelect("Compact Sedan")}
-                    className="bg-accent-orange text-white px-4 md:px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 text-sm md:text-base"
-                  >
-                    Select
-                  </button>
-                </div>
-              </div>
+          {/* Show message when no cars match filter */}
+          {filteredCars.length === 0 && (
+            <div className="text-center py-12">
+              <Car className="h-16 w-16 text-gray-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">No vehicles found</h3>
+              <p className="text-gray-400">Try selecting a different category.</p>
             </div>
+          )}
+        </div>
+      </section>
 
-            <div className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
-              <Image
-                src="/images/luxury-cars-bw.jpg"
-                alt="Luxury SUV"
-                width={400}
-                height={250}
-                className="w-full h-40 md:h-48 object-cover"
-              />
-              <div className="p-4 md:p-6">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Luxury SUV</h3>
-                <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
-                  <span className="bg-accent-orange text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Premium
-                  </span>
-                  <span className="bg-green-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Spacious
-                  </span>
-                  <span className="bg-blue-600 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                    Powerful
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-xl md:text-2xl font-bold text-white">$125</span>
-                    <span className="text-gray-400 text-sm md:text-base">/day</span>
-                  </div>
-                  <button
-                    onClick={() => handleCarSelect("Luxury SUV")}
-                    className="bg-accent-orange text-white px-4 md:px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 text-sm md:text-base"
-                  >
-                    Select
-                  </button>
-                </div>
+      {/* Discount Offers Section */}
+      <section className="py-12 bg-gradient-to-r from-[#FC9510] to-[#FF6B35]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Special Offers</h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-4xl font-bold text-white mb-2">10%</div>
+                <div className="text-xl font-semibold text-white mb-2">Weekly Discount</div>
+                <p className="text-white/90">Book a vehicle for 1 week and save 10% on your total rental cost</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-4xl font-bold text-white mb-2">15%</div>
+                <div className="text-xl font-semibold text-white mb-2">Monthly Discount</div>
+                <p className="text-white/90">Book a vehicle for 1 month and save 15% on your total rental cost</p>
               </div>
             </div>
           </div>
@@ -291,7 +263,6 @@ export default function HomePage() {
                 Your trusted partner for convenient and affordable car rentals in Georgia.
               </p>
             </div>
-
             <div>
               <h3 className="text-base md:text-lg font-semibold mb-4">Contact Info</h3>
               <div className="space-y-2">
@@ -310,7 +281,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
             <div>
               <h3 className="text-base md:text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
@@ -332,7 +302,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
           <div className="border-t border-gray-800 mt-6 md:mt-8 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-xs md:text-sm">© 2024 ASN Car Rentals. All rights reserved.</p>
           </div>
