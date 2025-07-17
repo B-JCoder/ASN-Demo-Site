@@ -154,12 +154,10 @@ export default function BookingForm({
                 className="w-full pl-10 pr-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-accent-orange transition-all appearance-none bg-white text-gray-900 text-sm md:text-base"
                 required
               >
-                <option value="">Select Vehicle Type</option>
-                <option value="economy">Economy Car</option>
-                <option value="compact">Compact Car</option>
-                <option value="midsize">Midsize Car</option>
-                <option value="suv">SUV</option>
-                <option value="luxury">Luxury Car</option>
+               
+                <option value="economy">Sedan</option>
+                <option value="compact">SUV</option>
+                <option value="midsize">Van</option>
               </select>
             </div>
           </div>
