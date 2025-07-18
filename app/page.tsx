@@ -43,8 +43,12 @@ export default function HomePage() {
     setSelectedVehicle(carName)
     scrollToBooking()
   }
+const VEHICLE_TYPES = ['All', 'Sedan', 'SUV', 'Van'] as const;
+type VehicleType = (typeof VEHICLE_TYPES)[number]; // 'All'|'Sedan'|'SUV'|'Van'
 
-  const [filter, setFilter] = useState("All")
+  const [filter, setFilter] = useState<VehicleType>('All');
+
+
 
   // Updated cars array with proper categories - ensuring each car has consistent data
   const cars = [
@@ -69,6 +73,7 @@ export default function HomePage() {
 
   // Improved filtering logic
   const filteredCars = filter === "All" ? cars : cars.filter((car) => car.category === filter)
+  
 
   return (
     <div className="min-h-screen bg-primary-dark">
@@ -182,21 +187,22 @@ export default function HomePage() {
             </p>
           </div>
           {/* Filter Buttons */}
-          <div className="flex justify-center gap-4 mb-10">
-            {["All", "Sedan", "SUV", "Van"].map((type) => (
-              <button
-                key={type}
-                className={`px-6 py-3 rounded-full font-medium text-white transition-all duration-300 ${
-                  filter === type
-                    ? "bg-accent-orange shadow-lg scale-105"
-                    : "bg-gray-700 hover:bg-gray-600 hover:scale-105"
-                }`}
-                onClick={() => setFilter(type)}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
+         <div className="flex justify-center gap-4 mb-10">
+  {VEHICLE_TYPES.map((type) => (
+    <button
+      key={type}
+      onClick={() => setFilter(type)}
+      className={`px-6 py-3 rounded-full font-medium text-white ${
+        filter === type
+          ? 'bg-accent-orange shadow-lg scale-105'
+          : 'bg-gray-700 hover:bg-gray-600'
+      }`}
+    >
+      {type}
+    </button>
+  ))}
+</div>
+
           {/* Car Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredCars.map((car) => (
