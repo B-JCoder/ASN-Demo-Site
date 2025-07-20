@@ -58,12 +58,12 @@ export default function Navbar() {
             >
               About
             </button>
-            <button
-              onClick={() => scrollToSection("cars")}
+            <Link
+              href="/car"
               className="text-white hover:text-accent-orange hover:scale-105 transition-all duration-300"
             >
               Cars
-            </button>
+            </Link>
             <Link
               href="/booking"
               className="bg-accent-orange text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
@@ -101,12 +101,13 @@ export default function Navbar() {
               >
                 About
               </button>
-              <button
-                onClick={() => scrollToSection("cars")}
+              <Link
+                href="/car"
                 className="block px-3 py-2 text-white hover:text-accent-orange hover:scale-105 transition-all duration-300 w-full text-left"
+                onClick={() => setIsOpen(false)}
               >
                 Cars
-              </button>
+              </Link>
               <Link
                 href="/booking"
                 className="block px-3 py-2 bg-accent-orange text-white rounded-lg font-semibold hover:scale-105 transition-all duration-300 text-center"
