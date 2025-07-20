@@ -83,14 +83,7 @@ export default function HomePage() {
       <Navbar />
       <WhatsAppButton />
 <section className="relative h-screen w-full overflow-hidden text-white">
-  {/* Background Image */}
-  {/* <Image
-    src="/images/6270c5f1-0187-4b7b-b9e4-f0d7cb5bde81.png"
-    alt="Luxury Cars"
-    fill
-    className="object-cover object-center z-0"
-    priority
-  /> */}
+ 
       <Image
           src="/images/luxury-cars-banner.jpg"
           alt="Luxury Car"

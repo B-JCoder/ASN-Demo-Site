@@ -74,7 +74,7 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Full Name
               </Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-700" />
                 <Input
                   id="name"
                   name="name"
@@ -91,7 +91,7 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Email Address
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-700" />
                 <Input
                   id="email"
                   name="email"
@@ -108,7 +108,7 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Phone Number
               </Label>
               <div className="relative">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-700" />
                 <Input
                   id="phone"
                   name="phone"
@@ -125,13 +125,13 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Vehicle Type
               </Label>
               <div className="relative">
-                <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 z-10" />
+                <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-900 z-10" />
                 <Select name="vehicle" defaultValue={selectedVehicle} required>
-                  <SelectTrigger className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500">
-                    <SelectValue placeholder="Sedan" />
+                  <SelectTrigger className="pl-10 text-gray-950 border-gray-300 focus:border-orange-500 focus:ring-orange-500">
+                    <SelectValue placeholder="Select a vehicle" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Honda Accord">Honda Accord</SelectItem>
+                    <SelectItem  value="Honda Accord">Honda Accord</SelectItem>
                     <SelectItem value="Honda Civic">Honda Civic</SelectItem>
                     <SelectItem value="Honda HR-V">Honda HR-V</SelectItem>
                     <SelectItem value="Toyota Camry">Toyota Camry</SelectItem>
@@ -153,7 +153,7 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Pickup Location
               </Label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-900" />
                 <Input
                   id="pickupLocation"
                   name="pickupLocation"
@@ -170,7 +170,7 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Drop-off Location
               </Label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-900" />
                 <Input
                   id="dropoffLocation"
                   name="dropoffLocation"
@@ -187,13 +187,13 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Pickup Date
               </Label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-700" />
                 <Input
                   id="pickupDate"
                   name="pickupDate"
                   type="date"
                   required
-                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500 text-gray-900" 
                   placeholder="mm/dd/yyyy"
                 />
               </div>
@@ -204,13 +204,13 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
                 Drop-off Date
               </Label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-900" />
                 <Input
                   id="dropoffDate"
                   name="dropoffDate"
                   type="date"
                   required
-                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="pl-10 border-gray-300 text-gray-900 focus:border-orange-500 focus:ring-orange-500"
                   placeholder="mm/dd/yyyy"
                 />
               </div>
