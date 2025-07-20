@@ -5,7 +5,6 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, Shield, DollarSign, Clock, Car, Phone, MapPin } from "lucide-react"
 import Navbar from "@/components/navbar"
 import BookingForm from "@/components/booking-form"
-import CarCard from "@/components/cars"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 export default function HomePage() {
@@ -38,41 +37,6 @@ export default function HomePage() {
       element.scrollIntoView({ behavior: "smooth" })
     }
   }
-
-  const handleGetQuote = (carName: string) => {
-    setSelectedVehicle(carName)
-    scrollToBooking()
-  }
-const VEHICLE_TYPES = ['All', 'Sedan', 'SUV', 'Van'] as const;
-type VehicleType = (typeof VEHICLE_TYPES)[number]; // 'All'|'Sedan'|'SUV'|'Van'
-
-  const [filter, setFilter] = useState<VehicleType>('All');
-
-
-
-  // Updated cars array with proper categories - ensuring each car has consistent data
-  const cars = [
-    // Sedan Cars
-    { id: 1, name: "Honda Accord", category: "Sedan" },
-    { id: 2, name: "Honda Civic", category: "Sedan" },
-    { id: 3, name: "Honda HR-V", category: "Sedan" },
-    { id: 4, name: "Toyota Camry", category: "Sedan" },
-    { id: 5, name: "Toyota Prius", category: "Sedan" },
-    { id: 6, name: "Hyundai Elantra", category: "Sedan" },
-
-    // SUV Cars
-    { id: 7, name: "Toyota RAV4", category: "SUV" },
-    { id: 8, name: "Tesla Model Y", category: "SUV" },
-    { id: 9, name: "Honda CR-V", category: "SUV" },
-
-    // Van Cars
-    { id: 10, name: "Ford Transit Custom", category: "Van" },
-    { id: 11, name: "Ford Transit", category: "Van" },
-    { id: 12, name: "Mercedes-Benz Sprinter", category: "Van" },
-  ]
-
-  // Improved filtering logic
-  const filteredCars = filter === "All" ? cars : cars.filter((car) => car.category === filter)
   
 
   return (
@@ -175,54 +139,6 @@ type VehicleType = (typeof VEHICLE_TYPES)[number]; // 'All'|'Sedan'|'SUV'|'Van'
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="cars" className="py-16 md:py-20 bg-primary-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16 fade-in-section">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">Our Fleet</h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-              Choose from our diverse selection of well-maintained vehicles
-            </p>
-          </div>
-          {/* Filter Buttons */}
-         <div className="flex justify-center gap-4 mb-10">
-  {VEHICLE_TYPES.map((type) => (
-    <button
-      key={type}
-      onClick={() => setFilter(type)}
-      className={`px-6 py-3 rounded-full font-medium text-white ${
-        filter === type
-          ? 'bg-accent-orange shadow-lg scale-105'
-          : 'bg-gray-700 hover:bg-gray-600'
-      }`}
-    >
-      {type}
-    </button>
-  ))}
-</div>
-
-          {/* Car Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredCars.map((car) => (
-              <CarCard
-                key={car.id}
-                name={car.name}
-                category={car.category}
-                onGetQuote={() => handleGetQuote(car.name)}
-              />
-            ))}
-          </div>
-
-          {/* Show message when no cars match filter */}
-          {filteredCars.length === 0 && (
-            <div className="text-center py-12">
-              <Car className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No vehicles found</h3>
-              <p className="text-gray-400">Try selecting a different category.</p>
-            </div>
-          )}
         </div>
       </section>
 
