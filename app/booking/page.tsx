@@ -5,6 +5,8 @@ import Link from "next/link"
 import { ArrowLeft, CreditCard, MapPin, Clock, Percent } from "lucide-react"
 import Navbar from "@/components/navbar"
 import BookingForm from "@/components/booking-form"
+import Footer from "@/components/footer"
+import WhatsAppButton from "@/components/whatsapp-button"
 
 export default function BookingPage() {
   useEffect(() => {
@@ -30,6 +32,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-primary-dark">
       <Navbar />
+      <WhatsAppButton />
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-12 md:pb-16 bg-gradient-to-br from-[#FC9510] to-[#212121] hero-animate">
@@ -183,6 +186,8 @@ export default function BookingPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
+
   )
 }

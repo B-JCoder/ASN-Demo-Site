@@ -58,12 +58,18 @@ export default function Navbar() {
             >
               About
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection("cars")}
               className="text-white hover:text-accent-orange hover:scale-105 transition-all duration-300"
             >
               Cars
-            </button>
+            </button> */}
+            <Link
+              href="/cars"
+              className=" text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              Cars
+            </Link>
             <Link
               href="/booking"
               className="bg-accent-orange text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
