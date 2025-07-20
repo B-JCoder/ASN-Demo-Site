@@ -33,11 +33,11 @@ Please contact the customer to confirm the booking.
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        service_id: "your_service_id",
-        template_id: "your_template_id",
+        service_id: "service_01qge8t",
+        template_id: "template_1gnju3m",
         user_id: "your_user_id",
         template_params: {
-          to_email: "admin@asnrentals.com",
+          to_email: "bilalcodes777@gmail.com",
           from_name: data.name,
           from_email: data.email,
           message: emailContent,
