@@ -7,21 +7,15 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import BookingForm from "@/components/booking-form"
 import WhatsAppButton from "@/components/whatsapp-button"
+import VehicleImage from "@/components/VehicleImage"
 
 const VEHICLE_TYPES = ["All", "Sedan", "SUV", "Van"] as const
-type VehicleType = (typeof VEHICLE_TYPES)[number]
-
-interface CarData {
-  id: number
-  name: string
-  category: string
-}
 
 export default function HomePage() {
   const [selectedVehicle, setSelectedVehicle] = useState<string>("")
-  const [filter, setFilter] = useState<VehicleType>("All")
+  const [filter, setFilter] = useState<typeof VEHICLE_TYPES[number]>("All")
 
-  const allCars: CarData[] = [
+  const allCars = [
     { id: 1, name: "Honda Accord", category: "Sedan" },
     { id: 2, name: "Honda Civic", category: "Sedan" },
     { id: 3, name: "Honda HR-V", category: "Sedan" },
@@ -37,7 +31,9 @@ export default function HomePage() {
   ]
 
   const filteredCars = useMemo(() => {
-    return filter === "All" ? allCars : allCars.filter((car) => car.category === filter)
+    return filter === "All"
+      ? allCars
+      : allCars.filter((car) => car.category === filter)
   }, [filter])
 
   const scrollToSection = (id: string) => {
@@ -50,7 +46,7 @@ export default function HomePage() {
     scrollToSection("booking")
   }
 
-  const renderCarCard = (car: CarData) => {
+  const renderCarCard = (car: (typeof allCars)[number]) => {
     const Icon =
       car.category === "Van" ? Truck : car.category === "SUV" ? Users : Car
 
@@ -59,9 +55,9 @@ export default function HomePage() {
         key={car.id}
         className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
       >
-        <div className="relative h-48 bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center">
-          <Icon className="h-16 w-16 text-gray-400" />
-          <div className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="relative h-48 bg-black flex items-center justify-center">
+          <VehicleImage name={car.name} />
+          <div className="absolute top-4 left-4 bg-[#FC9510] text-white px-3 py-1 rounded-full text-sm font-medium">
             {car.category}
           </div>
         </div>
@@ -69,7 +65,7 @@ export default function HomePage() {
           <h3 className="text-xl font-bold text-white mb-4">{car.name}</h3>
           <button
             onClick={() => handleGetQuote(car.name)}
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105"
+            className="w-full bg-[#FC9510] hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105"
           >
             Get a Quote
           </button>
@@ -82,42 +78,34 @@ export default function HomePage() {
     <div className="bg-gray-900 text-white">
       <Navbar />
       <WhatsAppButton />
-<section className="relative h-screen w-full overflow-hidden text-white">
- 
-      <Image
+
+      <section className="relative h-screen w-full overflow-hidden text-white">
+        <Image
           src="/images/luxury-cars-banner.jpg"
           alt="Luxury Car"
           fill
-          
           className="object-cover object-center z-0"
-    priority
+          priority
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10"></div>
+        <div className="relative z-20 h-full flex items-center justify-center px-6">
+          <div className="max-w-4xl text-center space-y-8">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl">
+              Unleash the <span className="text-[#FC9510]">Power</span> of Prestige
+            </h1>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto drop-shadow-xl">
+              Experience the pinnacle of comfort and performance with our exclusive selection of luxury cars.
+            </p>
+            <button
+              onClick={() => scrollToSection("cars")}
+              className="inline-flex items-center gap-2 bg-[#FC9510] hover:bg-orange-400 text-black font-semibold px-7 py-3 rounded-full text-lg transition shadow-lg hover:scale-105"
+            >
+              Explore Our Cars <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </section>
 
-  {/* Gradient Overlay for better contrast */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10"></div>
-
-  {/* Content */}
-  <div className="relative z-20 h-full flex items-center justify-center px-6">
-    <div className="max-w-4xl text-center space-y-8">
-      <h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl">
-        Unleash the <span className="text-[#FC9510]">Power</span> of Prestige
-      </h1>
-      <p className="text-lg text-gray-300 max-w-2xl mx-auto drop-shadow-xl">
-        Experience the pinnacle of comfort and performance with our exclusive selection of luxury cars.
-      </p>
-      <button
-        onClick={() => scrollToSection("cars")}
-        className="inline-flex items-center gap-2 bg-[#FC9510] hover:bg-orange-400 text-black font-semibold px-7 py-3 rounded-full text-lg transition shadow-lg hover:scale-105"
-      >
-        Explore Our Cars <ArrowRight className="h-5 w-5" />
-      </button>
-    </div>
-  </div>
-</section>
-
-
-
-      {/* Cars Section */}
       <section id="cars" className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -127,7 +115,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Filter Buttons */}
           <div className="flex justify-center gap-4 mb-10 flex-wrap">
             {VEHICLE_TYPES.map((type) => (
               <button
@@ -135,16 +122,19 @@ export default function HomePage() {
                 onClick={() => setFilter(type)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   filter === type
-                    ? "bg-orange-500 text-white shadow-lg scale-105"
+                    ? "bg-[#FC9510] text-white shadow-lg scale-105"
                     : "bg-gray-700 hover:bg-gray-600 text-white hover:scale-105"
                 }`}
               >
-                {type} ({type === "All" ? allCars.length : allCars.filter((car) => car.category === type).length})
+                {type} ({
+                  type === "All"
+                    ? allCars.length
+                    : allCars.filter((car) => car.category === type).length
+                })
               </button>
             ))}
           </div>
 
-          {/* Car Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCars.map(renderCarCard)}
           </div>
@@ -159,7 +149,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Booking Section */}
       <section id="booking" className="py-16 bg-gray-900">
         <div className="max-w-4xl mx-auto px-4">
           <BookingForm selectedVehicle={selectedVehicle} />
