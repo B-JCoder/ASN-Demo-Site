@@ -216,6 +216,31 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
               </div>
             </div>
           </div>
+             {/* Upload License */}
+      <div className="flex flex-col items-center mb-4">
+        <label
+          htmlFor="license"
+          className="text-[#FC9510] font-semibold text-sm mb-2"
+        >
+          Upload Your License (PDF)
+        </label>
+        <input
+          type="file"
+          id="license"
+          accept="application/pdf"
+          required
+          name="license"
+          
+          className="block text-sm text-gray-300
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-full file:border-0
+                     file:text-sm file:font-semibold
+                     file:bg-[#FC9510] file:text-white
+                     hover:file:bg-[#e48306]
+                     cursor-pointer"
+        />
+    
+      </div>
 
           {submitStatus === "success" && (
             <div className="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg">
