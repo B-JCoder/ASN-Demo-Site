@@ -18,46 +18,43 @@ export default function BookingForm({ selectedVehicle = "" }: BookingFormProps) 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus("idle")
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus("idle");
 
-    const formData = new FormData(e.currentTarget)
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      vehicle: formData.get("vehicle"),
-      pickupLocation: formData.get("pickupLocation"),
-      dropoffLocation: formData.get("dropoffLocation"),
-      pickupDate: formData.get("pickupDate"),
-      dropoffDate: formData.get("dropoffDate"),
-    }
+  const formData = new FormData(e.currentTarget);
 
-    try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-
-      if (response.ok) {
-        setSubmitStatus("success")
-        // Reset form
-        e.currentTarget.reset()
-      } else {
-        setSubmitStatus("error")
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error)
-      setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
-    }
+  // Validate license file
+  const licenseFile = formData.get("license") as File;
+  if (!licenseFile || licenseFile.type !== "application/pdf") {
+    alert("Please upload a valid license in PDF format.");
+    setIsSubmitting(false);
+    return;
   }
+
+  try {
+    const response = await fetch("/api/send-email", {
+      method: "POST",
+      body: formData, // we send FormData instead of JSON
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSubmitStatus("success");
+      e.currentTarget.reset();
+    } else {
+      setSubmitStatus("error");
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    setSubmitStatus("error");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <div className="max-w-2xl mx-auto">
