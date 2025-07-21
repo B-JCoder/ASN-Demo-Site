@@ -10,7 +10,7 @@ export default function VehicleImage({ name }: VehicleImageProps) {
   const imagePath = `/images/cars/${imageName}.jpg`;
 
   return (
-    <div className="w-64 h-40 relative rounded overflow-hidden border shadow">
+    <div className="w-full h-full relative rounded overflow-hidden border shadow">
       <Image
         src={imagePath}
         alt={name}

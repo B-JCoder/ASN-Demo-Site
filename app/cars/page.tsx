@@ -21,13 +21,14 @@ export default function HomePage() {
     { id: 3, name: "Honda HR-V", category: "Sedan" },
     { id: 4, name: "Toyota Camry", category: "Sedan" },
     { id: 5, name: "Toyota Prius", category: "Sedan" },
+    { id: 5, name: "Toyota Corolla", category: "Sedan" },
     { id: 6, name: "Hyundai Elantra", category: "Sedan" },
-    { id: 7, name: "Toyota RAV4", category: "SUV" },
-    { id: 8, name: "Tesla Model Y", category: "SUV" },
-    { id: 9, name: "Honda CR-V", category: "SUV" },
-    { id: 10, name: "Ford Transit Custom", category: "Van" },
-    { id: 11, name: "Ford Transit", category: "Van" },
-    { id: 12, name: "Mercedes-Benz Sprinter", category: "Van" },
+    // { id: 7, name: "Toyota RAV4", category: "SUV" },
+    // { id: 8, name: "Tesla Model Y", category: "SUV" },
+    // { id: 9, name: "Honda CR-V", category: "SUV" },
+    // { id: 10, name: "Ford Transit Custom", category: "Van" },
+    // { id: 11, name: "Ford Transit", category: "Van" },
+    // { id: 12, name: "Mercedes-Benz Sprinter", category: "Van" },  
   ]
 
   const filteredCars = useMemo(() => {
@@ -142,7 +143,7 @@ export default function HomePage() {
           {filteredCars.length === 0 && (
             <div className="text-center py-12">
               <Car className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No vehicles found</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Currently Unavailable</h3>
               <p className="text-gray-400">Try selecting a different category.</p>
             </div>
           )}
