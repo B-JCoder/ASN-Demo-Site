@@ -127,18 +127,20 @@ export default function HomePage() {
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <Shield className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">No Credit Check</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">No Credit Card Required </h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Credit card optional. We make car rental accessible to everyone.
+                Rent a car with us, and you do not have to go through a credit check. You may present a form of ID and a payment option of your choice, so any motorist is free to use our services.
+
+
               </p>
             </div>
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <DollarSign className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Affordable Rates</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Set Prices</h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Transparent pricing with no hidden fees. What you see is what you pay.
+                Be at ease with our pricing model as you enjoy each service at an affordable price with no surprises. You will not be charged anything on top of what is on display.
               </p>
             </div>
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
@@ -147,25 +149,36 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Wide Selection</h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Many vehicles for different needs, from economy to luxury cars.
+                Now you can choose any of our economy, SUV, or even luxurious cars and make your journey as enjoyable as you always wanted.
+
+
               </p>
             </div>
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <Clock className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Flexible Terms</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Flexible Rental Schedule</h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Rent by day, week, or month. Choose what works best for you.
+                You can rent a car on a daily, weekly, or monthly basis and even personalize your needs to go above and beyond your expectations.
               </p>
             </div>
             <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section md:col-span-2 lg:col-span-1">
               <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-white" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Easy Process</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Booking in Minutes</h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Simple 3-step process: Choose your car, make payment, and drive away.
+                Rent a car in 3 easy steps: choose your car, make a payment, and your journey begins.
+              </p>
+            </div>
+            <div className="bg-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 fade-in-section md:col-span-2 lg:col-span-1">
+              <div className="bg-accent-orange w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                <Phone className="h-6 w-6 md:h-8 md:w-8 text-white" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Unlimited Assistance</h3>
+              <p className="text-gray-300 text-sm md:text-base">
+                We are always ready to help you 24/7 with any issues related to bookings, inquiries, or urgent matters.
               </p>
             </div>
           </div>

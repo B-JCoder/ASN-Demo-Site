@@ -107,6 +107,7 @@ export default function Navbar() {
               >
                 About
               </button>
+              
                 <Link
               href="/cars"
               className=" text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
