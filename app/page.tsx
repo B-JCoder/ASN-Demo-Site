@@ -13,6 +13,27 @@ import Footer from "@/components/footer"
 export default function HomePage() {
   // State to manage selected vehicle
   const [selectedVehicle, setSelectedVehicle] = useState<string>("")
+  const [visibleCount, setVisibleCount] = useState<number>(6); // show first 6
+
+  const allCars = Array.from({ length: 17 }, (_, i) => ({
+    id: i + 1,
+    name: `Car ${i + 1}`,
+    image: `/images/cars/car-${i + 1}.jpg`,
+  }));
+
+  const visibleCars = allCars.slice(0, visibleCount);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Function to handle "See More" button click
+  // This will increase the number of visible cars by 6 each time it's clicked
+
+  const handleSeeMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -151,6 +172,55 @@ export default function HomePage() {
         </div>
       </section>
 
+  {/* Our Fleet */}
+      <section id="cars" className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-5xl font-bold text-white mb-4">Our Fleet</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Choose from our well-maintained vehicles.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visibleCars.map((car) => (
+              <div
+                key={car.id}
+                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-transform hover:scale-105 duration-300"
+              >
+                <div className="relative h-48 w-full bg-black">
+                  <Image
+                    src={car.image}
+                    alt={`Image of ${car.name}`}
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="p-4">
+                
+                  <button
+                    onClick={() => handleGetQuote(car.name)}
+                    className="w-full bg-[#FC9510] hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 hover:scale-105"
+                  >
+                    Get a Quote
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {visibleCount < allCars.length && (
+            <div className="mt-10 text-center">
+              <button
+                onClick={handleSeeMore}
+                className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-6 rounded-lg transition hover:scale-105"
+              >
+                See More
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
      
          
 
