@@ -171,23 +171,16 @@ import BookingForm from "@/components/booking-form"
 import WhatsAppButton from "@/components/whatsapp-button"
 import VehicleImage from "@/components/VehicleImage"
 
+
 export default function HomePage() {
   const [selectedVehicle, setSelectedVehicle] = useState<string>("")
 
-  const allCars = [
-    { id: 1, name: "Honda Accord" },
-    { id: 2, name: "Honda Civic" },
-    { id: 3, name: "Honda HR-V" },
-    { id: 4, name: "Toyota Camry" },
-    { id: 5, name: "Toyota Prius" },
-    { id: 6, name: "Toyota Corolla" },
-    { id: 7, name: "Hyundai Elantra" },
-    { id: 8, name: "Toyota RAV4" },
-    { id: 9, name: "Tesla Model Y" },
-    { id: 10, name: "Honda CR-V" },
-    { id: 11, name: "Ford Transit Custom" },
-    { id: 12, name: "Mercedes-Benz Sprinter" },
-  ]
+ const allCars = Array.from({ length: 17 }, (_, i) => ({
+  id: i + 1,
+  
+  image: `/images/cars/car-${i + 1}.jpg`
+
+}))
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
@@ -198,6 +191,13 @@ export default function HomePage() {
     setSelectedVehicle(carName)
     scrollToSection("booking")
   }
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const chunked: T[][] = []
+  for (let i = 0; i < arr.length; i += size) {
+    chunked.push(arr.slice(i, i + size))
+  }
+  return chunked
+}
 
   return (
     <div className="bg-gray-900 text-white">
@@ -233,37 +233,54 @@ export default function HomePage() {
       </section>
 
       {/* Our Fleet (Images only with Get a Quote) */}
-      <section id="cars" className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6">Our Fleet</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Choose from our well-maintained vehicles.
-            </p>
-          </div>
+<section id="cars" className="py-20 bg-gray-900">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-10">
+      <h2 className="text-5xl font-bold text-white mb-4">Our Fleet</h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Choose from our well-maintained vehicles.
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allCars.map((car) => (
-              <div
-                key={car.id}
-                className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <div className="relative h-48 w-full bg-black flex items-center justify-center">
-                  <VehicleImage name={car.name} />
-                </div>
-                <div className="p-6">
-                  <button
-                    onClick={() => handleGetQuote(car.name)}
-                    className="w-full bg-[#FC9510] hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105"
-                  >
-                    Get a Quote
-                  </button>
-                </div>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {allCars.map((car) => (
+        <div
+          key={car.id}
+          className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-transform hover:scale-105 duration-300"
+        >
+          <div className="relative h-48 w-full bg-black">
+            <Image
+              src={car.image}
+              alt={`Image of car`}
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="p-4">
+            <h3 className="text-white text-lg font-semibold mb-2">
+             
+            </h3>
+            <button
+             onClick={() => {
+    const form = document.getElementById("booking");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+             
+              className="w-full bg-[#FC9510] hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 hover:scale-105"
+            >
+              Get a Quote
+            </button>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* Booking Form Section */}
       <section id="booking" className="py-16 bg-gray-900">
