@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Phone, MapPin } from 'lucide-react'
+import { Phone, MapPin , Mail} from 'lucide-react'
 
 
 
@@ -42,6 +42,8 @@ const Footer = () => {
                   </div>
 
                   <div className="flex items-center">
+                    <Mail className="w-5 h-5 text-gray-500" />
+
                   
 
 
