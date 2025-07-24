@@ -42,7 +42,7 @@ const Footer = () => {
                   </div>
 
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-gray-500" />
+                    <Mail className="h-4 w-4 mr-2 text-accent-orange" />
 
                   
 
