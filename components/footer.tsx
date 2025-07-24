@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, MapPin } from 'lucide-react'
-import { SiGmail } from 'react-icons/si'
 
 
 
@@ -43,7 +42,7 @@ const Footer = () => {
                   </div>
 
                   <div className="flex items-center">
-                    <SiGmail className="h-4 w-4 mr-2 text-accent-orange" />
+                  
 
 
                     <span className="text-gray-400 text-sm md:text-base">admin@asnrentals.com</span>
