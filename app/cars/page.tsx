@@ -213,11 +213,13 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10"></div>
         <div className="relative z-20 h-full flex items-center justify-center px-6">
           <div className="max-w-4xl text-center space-y-8">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl">
-              Unleash the <span className="text-[#FC9510]">Power</span> of Prestige
-            </h1>
+            
+            <h1 className="text-4xl md:text-4xl font-extrabold leading-tight drop-shadow-6xl"> 
+  Affordable Rides. <span className="text-[#FC9510]">Unmatched Service.</span> 
+</h1>
+
             <p className="text-lg text-gray-300 max-w-2xl mx-auto drop-shadow-xl">
-              Experience the pinnacle of comfort and performance with our exclusive selection of luxury cars.
+              From city trips to airport runs, we offer well-maintained rental cars at the best rates, comfort made simple.
             </p>
             <button
               onClick={() => scrollToSection("cars")}
