@@ -82,8 +82,8 @@ export default function HomePage() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden hero-animate"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#FC9510] to-[#212121]"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-black/20 "></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 top-20">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-center lg:text-left hero-text-animate">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">

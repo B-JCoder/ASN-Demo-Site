@@ -202,7 +202,7 @@ export default function HomePage() {
       <WhatsAppButton />
 
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden text-white">
+      <section className="relative h-screen w-full overflow-hidden text-whit">
         <Image
           src="/images/luxury-cars-banner.jpg"
           alt="Luxury Car"
@@ -210,16 +210,16 @@ export default function HomePage() {
           className="object-cover object-center z-0"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10"></div>
+        <div className="absolute inset-0  bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10"></div>
         <div className="relative z-20 h-full flex items-center justify-center px-6">
           <div className="max-w-4xl text-center space-y-8">
             
             <h1 className="text-4xl md:text-4xl font-extrabold leading-tight drop-shadow-6xl"> 
-  Affordable Rides. <span className="text-[#FC9510]">Unmatched Service.</span> 
+  Unleash the power of <span className="text-[#FC9510]">reliable vehicles</span> 
 </h1>
-
+ 
             <p className="text-lg text-gray-300 max-w-2xl mx-auto drop-shadow-xl">
-              From city trips to airport runs, we offer well-maintained rental cars at the best rates, comfort made simple.
+              Experience the pinnacle of comfort and performance with our selection of cars
             </p>
             <button
               onClick={() => scrollToSection("cars")}

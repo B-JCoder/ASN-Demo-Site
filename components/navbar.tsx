@@ -38,10 +38,10 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-5">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-32">
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/images/asn-logo.jpg" alt="ASN Car Rentals" width={50} height={50} className="rounded-lg" />
-            <span className="text-2xl md:text-5xl lg:text-6xl font-bold text-white  leading-tight">ASN Car Rentals</span>
+            <span className="text-2xl md:text-5xl lg:text-7xl font-bold text-white  leading-tight">ASN Car Rentals</span>
           </Link>
 
           {/* Desktop Menu */}
