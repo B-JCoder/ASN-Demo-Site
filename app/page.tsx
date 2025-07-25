@@ -90,7 +90,7 @@ export default function HomePage() {
                 Convenient Auto Rentals
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-6 md:mb-8 leading-relaxed">
-                Comfort, flexibility, and affordability—drive with ease.
+                Comfort, flexibility, and affordability drive with ease.
               </p>
               <button
                 onClick={scrollToBooking}
