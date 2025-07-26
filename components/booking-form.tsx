@@ -26,12 +26,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   const formData = new FormData(e.currentTarget);
 
   // Validate license file
-  const licenseFile = formData.get("license") as File;
-  if (!licenseFile || licenseFile.type !== "application/pdf") {
-    alert("Please upload a valid license in PDF format.");
-    setIsSubmitting(false);
-    return;
-  }
+  
 
   try {
     const response = await fetch("/api/send-email", {
@@ -220,12 +215,12 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           htmlFor="license"
           className="text-[#FC9510] font-semibold text-sm mb-2"
         >
-          Upload Your License (PDF)
+          Upload Your License
         </label>
         <input
           type="file"
           id="license"
-          accept="application/pdf"
+          
           required
           name="license"
           
