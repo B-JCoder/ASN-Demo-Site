@@ -140,6 +140,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                     <SelectItem value="Ford Transit Custom">Ford Transit Custom</SelectItem>
                     <SelectItem value="Ford Transit">Ford Transit</SelectItem>
                     <SelectItem value="Mercedes-Benz Sprinter">Mercedes-Benz Sprinter</SelectItem>
+                    <SelectItem value="others">Others</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
