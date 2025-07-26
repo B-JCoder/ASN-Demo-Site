@@ -152,7 +152,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   name="pickupLocation"
                   type="text"
                   required
-                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500 text-gray-700 "
                   placeholder="Enter pickup location"
                 />
               </div>
@@ -169,7 +169,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   name="dropoffLocation"
                   type="text"
                   required
-                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                  className="pl-10 border-gray-300 focus:border-orange-500 focus:ring-orange-500 text-gray-700"
                   placeholder="Enter drop-off location"
                 />
               </div>
